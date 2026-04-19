@@ -11,7 +11,8 @@ export function AppLayout() {
   const handleLoadMahesh = async () => {
     setIsLoadingDemo(true);
     try {
-      const response = await fetch('http://localhost:8000/score/mahesh_critical_123', {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const response = await fetch(`${API_URL}/score/mahesh_critical_123`, {
         method: 'POST'
       });
       const scoreData = await response.json();

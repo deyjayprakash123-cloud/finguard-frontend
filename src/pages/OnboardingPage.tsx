@@ -35,7 +35,12 @@ export function OnboardingPage() {
     ];
 
     try {
-      const response = await fetch('http://localhost:8000/score/mahesh_critical_123', {
+      const nameInput = document.getElementById('name') as HTMLInputElement;
+      const userId = nameInput?.value || 'mahesh_critical_123';
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      
+      console.log('Sending data to Render backend...');
+      const response = await fetch(`${API_URL}/score/${userId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(mockSetuTxns)
