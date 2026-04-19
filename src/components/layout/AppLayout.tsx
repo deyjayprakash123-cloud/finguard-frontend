@@ -11,7 +11,7 @@ export function AppLayout() {
   const handleLoadMahesh = async () => {
     setIsLoadingDemo(true);
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://finguard-backend-itbs.onrender.com';
       const response = await fetch(`${API_URL}/score/mahesh_critical_123`, {
         method: 'POST'
       });

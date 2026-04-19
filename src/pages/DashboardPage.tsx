@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion, useMotionValue, animate } from 'framer-motion';
+import { motion, useMotionValue, animate, AnimatePresence } from 'framer-motion';
 import { RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 import { AlertTriangle, Activity, CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -12,6 +12,7 @@ export function DashboardPage() {
   const scoreData = location.state?.scoreData;
 
   const [displayScore, setDisplayScore] = useState(0);
+  const [showToast, setShowToast] = useState(false);
   const count = useMotionValue(0);
 
   const finalScore = scoreData ? scoreData.risk_score : mockRiskScore.score;
@@ -42,6 +43,14 @@ export function DashboardPage() {
     }, 500);
     return () => clearTimeout(timeout);
   }, [finalScore, count]);
+
+  useEffect(() => {
+    if (scoreData) {
+      setShowToast(true);
+      const timer = setTimeout(() => setShowToast(false), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [scoreData]);
 
   const getScoreColor = (score: number) => {
     if (score <= 50) return '#39ff14'; // Neon Green
@@ -193,6 +202,21 @@ export function DashboardPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Success Toast */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-6 right-6 bg-[#39ff14]/20 border border-[#39ff14]/50 text-[#39ff14] px-6 py-4 rounded-xl shadow-[0_0_20px_rgba(57,255,20,0.2)] flex items-center gap-3 z-50 backdrop-blur-md"
+          >
+            <CheckCircle className="w-6 h-6" />
+            <span className="font-semibold text-lg drop-shadow-md">Analysis Complete! Telegram Alert Sent.</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -37,7 +37,7 @@ export function OnboardingPage() {
     try {
       const nameInput = document.getElementById('name') as HTMLInputElement;
       const userId = nameInput?.value || 'mahesh_critical_123';
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const API_URL = import.meta.env.VITE_API_URL || 'https://finguard-backend-itbs.onrender.com';
       
       console.log('Sending data to Render backend...');
       const response = await fetch(`${API_URL}/score/${userId}`, {
