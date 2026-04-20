@@ -11,6 +11,7 @@ export function OnboardingPage() {
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [fullName, setFullName] = useState('');
   const navigate = useNavigate();
 
   const handleNext = () => setStep(2);
@@ -35,15 +36,14 @@ export function OnboardingPage() {
     ];
 
     try {
-      const nameInput = document.getElementById('name') as HTMLInputElement;
-      const userId = nameInput?.value || 'mahesh_critical_123';
+      const userId = fullName || 'mahesh_critical_123';
       const API_URL = import.meta.env.VITE_API_URL || 'https://finguard-backend-itbs.onrender.com';
       
       console.log('Sending data to Render backend...');
-      const response = await fetch(`${API_URL}/score/${userId}`, {
+      const response = await fetch(`${API_URL}/score/${encodeURIComponent(userId)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(mockSetuTxns)
+        body: JSON.stringify({ user_id: userId, name: fullName, transactions: mockSetuTxns })
       });
       const scoreData = await response.json();
       setIsAnalyzing(false);
@@ -82,7 +82,13 @@ export function OnboardingPage() {
               >
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="Enter your full name" className="bg-background/50" />
+                  <Input 
+                    id="name" 
+                    placeholder="Enter your full name" 
+                    className="bg-background/50" 
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
