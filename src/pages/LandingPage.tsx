@@ -144,10 +144,21 @@ export function LandingPage() {
       {/* Hero Section */}
       <motion.section 
         style={{ opacity, scale }}
-        className="relative h-screen flex flex-col items-center justify-center text-center px-4 pt-20"
+        className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 pt-20"
       >
-        <Badge className="mb-6 bg-white/5 text-muted-foreground border-white/10">Revolutionizing Financial Well-being</Badge>
-        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl mx-auto">
+        <Badge className="mb-6 bg-white/5 text-muted-foreground border-white/10 z-10">Revolutionizing Financial Well-being</Badge>
+        
+        {/* Animated Water Shield - Family Focus */}
+        <div className="relative w-48 h-48 mx-auto mb-8 flex items-center justify-center animate-float">
+          {/* Inner Glow */}
+          <div className="absolute inset-0 bg-blue-500/20 backdrop-blur-md shadow-[inset_0_0_20px_rgba(34,211,238,0.5),0_0_30px_rgba(34,211,238,0.3)] animate-bubble" />
+          {/* Glass edge highlights */}
+          <div className="absolute inset-2 bg-gradient-to-tr from-transparent via-white/20 to-transparent border border-white/30 backdrop-blur-sm animate-bubble" style={{ animationDelay: '-2s' }} />
+          {/* The Core Icon */}
+          <Users className="w-20 h-20 text-cyan-200 relative z-10 drop-shadow-[0_0_15px_rgba(34,211,238,0.8)]" />
+        </div>
+
+        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl mx-auto z-10">
           Predictive Security for your <br className="hidden md:block"/>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 animate-mesh" style={{ backgroundSize: '200% auto' }}>
             Financial Future.

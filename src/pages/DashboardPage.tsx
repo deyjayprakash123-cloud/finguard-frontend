@@ -58,7 +58,7 @@ export function DashboardPage() {
     return '#ff073a'; // Neon Red
   };
 
-  const chartData = [{ name: 'Risk', value: displayScore, fill: getScoreColor(displayScore) }];
+  const chartData = [{ name: 'Risk', value: finalScore, fill: getScoreColor(finalScore) }];
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500 max-w-6xl mx-auto">
@@ -90,6 +90,8 @@ export function DashboardPage() {
                     dataKey="value"
                     cornerRadius={10} 
                     isAnimationActive={true}
+                    animationDuration={1500}
+                    animationEasing="ease-out"
                   />
                 </RadialBarChart>
               </ResponsiveContainer>

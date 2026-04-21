@@ -40,6 +40,7 @@
   --animate-glow-pulse: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-mesh: mesh 10s ease-in-out infinite alternate;
   --animate-float: float 6s ease-in-out infinite;
+  --animate-bubble: bubble 8s ease-in-out infinite;
 
   @keyframes glow-pulse {
     0%, 100% {
@@ -60,6 +61,11 @@
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
+  }
+
+  @keyframes bubble {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
   }
 }
 
