@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Shield, Brain, Bell, Users, ChevronRight, Lock, Server } from 'lucide-react';
+import { Shield, Brain, Bell, Users, ChevronRight, Lock, Server, Globe, Terminal, Mail, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Magnetic Button Component
@@ -234,18 +234,105 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* Cloud Infrastructure Section */}
+      <section className="py-24 px-4 relative">
+        <div className="max-w-4xl mx-auto space-y-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">Our Cloud Infrastructure</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Deployed on world-class architectures for uncompromised speed and reliability.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FeatureCard 
+              icon={<div className="relative"><Globe className="w-8 h-8 text-indigo-400" /><span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping"/><span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"/></div>}
+              title="Vercel Edge Network"
+              desc="High-Performance Edge Frontend hosting our React UI for global availability and sub-second load times."
+              delay={0.1}
+            />
+            <FeatureCard 
+              icon={<div className="relative"><Terminal className="w-8 h-8 text-cyan-400" /><span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-ping"/><span className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full"/></div>}
+              title="Render Cloud"
+              desc="Distributed AI Backbone hosting our FastAPI server and XGBoost ML engine with auto-scaling capabilities."
+              delay={0.2}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Guardian Alert Registration Section */}
+      <section className="py-24 px-4 bg-black/20 border-y border-white/5 relative">
+        <div className="max-w-5xl mx-auto space-y-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center space-y-4"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">Guardian Alert Logic</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Connect to our Telegram Bot to receive real-time behavioral alerts.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            <div className="hidden md:block absolute top-1/2 left-10 right-10 h-px bg-gradient-to-r from-indigo-500/50 to-cyan-500/50 -translate-y-1/2 z-0" />
+            
+            {[
+              { step: '1', title: 'Start the Bot', desc: "Search for @FinGuardAlertBot on Telegram and click 'Start'." },
+              { step: '2', title: 'Get your ID', desc: "Use the /id command or @userinfobot to get your unique Telegram Chat ID." },
+              { step: '3', title: 'Registration', desc: "Since this is a prototype, users must Contact the Administrator to whitelist their ID in the Render Cloud Environment." }
+            ].map((s, i) => (
+              <motion.div 
+                key={s.step}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15 }}
+                className="relative z-10 p-6 bg-card/60 backdrop-blur-xl rounded-2xl border border-white/10 text-center"
+              >
+                <div className="w-12 h-12 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xl mx-auto mb-4 border border-indigo-500/30">
+                  {s.step}
+                </div>
+                <h4 className="font-bold mb-2">{s.title}</h4>
+                <p className="text-sm text-muted-foreground">{s.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer CTA */}
-      <section className="py-32 px-4 text-center">
+      <section className="py-24 px-4 text-center pb-8">
         <motion.div
            initial={{ opacity: 0, y: 30 }}
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
            className="max-w-3xl mx-auto space-y-8"
         >
-          <h2 className="text-4xl font-bold">Ready to secure your peace of mind?</h2>
-          <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-8 py-6 text-lg hover:scale-105 transition-transform" onClick={() => navigate('/onboarding')}>
-            Start the Demo
-          </Button>
+          <div className="p-8 rounded-3xl bg-gradient-to-br from-indigo-900/40 to-cyan-900/20 border border-indigo-500/20 backdrop-blur-md">
+            <h2 className="text-3xl font-bold mb-4">Guardian Support</h2>
+            <p className="text-lg text-indigo-200/80 mb-6 font-medium">
+              Want to secure a family member?<br/>Contact us to register your Telegram ID for real-time notifications.
+            </p>
+            <a href="mailto:deyjayprakash123@gmail.com" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-indigo-500/20 text-indigo-300 hover:text-white hover:bg-indigo-500/40 transition-colors border border-indigo-500/30 group">
+              <Mail className="w-5 h-5 group-hover:scale-110 transition-transform"/>
+              deyjayprakash123@gmail.com
+            </a>
+          </div>
+
+          <div className="pt-24 flex flex-col items-center gap-2">
+            <p className="flex items-center gap-2 text-muted-foreground">
+              Developed with <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse"/> by <span className="text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] font-semibold">Jayaprakash Dey</span> & <span className="text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)] font-semibold">Saswat Rout</span>
+            </p>
+            <p className="text-sm text-indigo-300/50">Team 404 Found</p>
+          </div>
         </motion.div>
       </section>
     </div>
