@@ -38,6 +38,8 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   --animate-glow-pulse: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-mesh: mesh 10s ease-in-out infinite alternate;
+  --animate-float: float 6s ease-in-out infinite;
 
   @keyframes glow-pulse {
     0%, 100% {
@@ -49,36 +51,46 @@
       border-color: rgba(255, 7, 58, 1);
     }
   }
+
+  @keyframes mesh {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
 }
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
+    --background: 230 50% 6%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 11%;
+    --card: 230 47% 8%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 11%;
+    --popover: 230 47% 8%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
+    --primary-foreground: 230 47% 8%;
 
-    --secondary: 222 47% 16%;
+    --secondary: 230 47% 12%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 222 47% 16%;
+    --muted: 230 47% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 222 47% 16%;
+    --accent: 230 47% 12%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 348 83% 47%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 222 47% 16%;
-    --input: 222 47% 16%;
+    --border: 230 47% 12%;
+    --input: 230 47% 12%;
     --ring: 216 12% 84%;
     
     --radius: 0.75rem;

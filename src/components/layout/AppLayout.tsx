@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { Home, History, UserPlus, ShieldAlert, PlayCircle, Loader2 } from 'lucide-react';
+import { Home, History, ShieldAlert, PlayCircle, Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -16,7 +16,7 @@ export function AppLayout() {
         method: 'POST'
       });
       const scoreData = await response.json();
-      navigate('/', { state: { scoreData } });
+      navigate('/app', { state: { scoreData } });
     } catch (error) {
       console.error(error);
     } finally {
@@ -25,9 +25,8 @@ export function AppLayout() {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/', icon: Home },
-    { name: 'Alert History', path: '/alerts', icon: History },
-    { name: 'Onboarding (Demo)', path: '/onboarding', icon: UserPlus },
+    { name: 'Dashboard', path: '/app', icon: Home },
+    { name: 'Alert History', path: '/app/alerts', icon: History },
   ];
 
   return (
@@ -70,12 +69,12 @@ export function AppLayout() {
           </button>
           
           <div className="flex items-center gap-3 px-3 py-2">
-            <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-sm font-bold text-secondary-foreground">
-              US
+            <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center text-sm font-bold text-indigo-400 border border-indigo-500/30">
+              {location.state?.scoreData?.name ? location.state.scoreData.name.substring(0, 2).toUpperCase() : 'US'}
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-medium">User Name</span>
-              <span className="text-xs text-muted-foreground">Demo Account</span>
+              <span className="text-sm font-medium">{location.state?.scoreData?.name || 'Demo Account'}</span>
+              <span className="text-xs text-indigo-400/70 cursor-pointer hover:text-indigo-400 transition-colors" onClick={() => navigate('/')}>Return Home</span>
             </div>
           </div>
         </div>

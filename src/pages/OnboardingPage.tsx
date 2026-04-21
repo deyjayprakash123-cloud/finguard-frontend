@@ -47,29 +47,40 @@ export function OnboardingPage() {
       });
       const scoreData = await response.json();
       setIsAnalyzing(false);
-      navigate('/', { state: { scoreData } });
+      navigate('/app', { state: { scoreData } });
     } catch (error) {
       console.error(error);
       setIsAnalyzing(false);
-      navigate('/');
+      navigate('/app');
     }
   };
 
   return (
-    <div className="max-w-2xl mx-auto pt-12">
+    <div className="min-h-screen bg-background flex flex-col justify-end sm:justify-center p-0 sm:p-4">
+      {/* Background element */}
+      <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-black">
+        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-indigo-500/20 to-cyan-500/10 blur-3xl opacity-50" />
+      </div>
+
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ type: "spring", damping: 25, stiffness: 200 }}
+        className="w-full max-w-xl mx-auto"
       >
-        <Card className="shadow-2xl border-border/50 bg-card/80 backdrop-blur-xl">
-          <CardHeader>
-            <div className="flex items-center gap-2 mb-2">
-              <Shield className="w-8 h-8 text-primary" />
-              <CardTitle className="text-3xl">Welcome to FinGuard</CardTitle>
+        <Card className="shadow-2xl border-white/10 bg-card/80 backdrop-blur-xl rounded-t-3xl sm:rounded-3xl border-b-0 sm:border-b overflow-hidden">
+          <div className="h-1 w-12 bg-white/20 rounded-full mx-auto mt-4 sm:hidden" />
+          <CardHeader className="pt-6">
+            <div className="flex flex-col items-center gap-4 mb-2 text-center">
+              <div className="p-4 bg-indigo-500/20 rounded-2xl ring-1 ring-white/10">
+                <Shield className="w-10 h-10 text-indigo-400" />
+              </div>
+              <CardTitle className="text-3xl font-bold tracking-tight">
+                {fullName ? `Welcome, ${fullName.split(' ')[0]}` : 'Welcome to FinGuard'}
+              </CardTitle>
             </div>
-            <CardDescription className="text-base">
-              Set up your profile to monitor financial health.
+            <CardDescription className="text-base text-center">
+              {fullName ? "Your financial safety is our priority." : "Set up your secure profile to begin monitoring."}
             </CardDescription>
           </CardHeader>
           
@@ -108,11 +119,11 @@ export function OnboardingPage() {
                 animate={{ opacity: 1, x: 0 }}
                 className="space-y-6"
               >
-                <div className="p-6 rounded-lg bg-secondary/50 border border-primary/20 space-y-4 text-center">
-                  <div className="mx-auto w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-4">
-                    <Shield className="w-8 h-8 text-primary" />
+                <div className="p-8 rounded-2xl bg-secondary/50 border border-white/10 space-y-4 text-center">
+                  <div className="mx-auto w-20 h-20 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 ring-1 ring-indigo-500/30">
+                    <Shield className="w-10 h-10 text-indigo-400" />
                   </div>
-                  <h3 className="text-xl font-medium">Connect Bank Account</h3>
+                  <h3 className="text-2xl font-bold">Connect Bank Account</h3>
                   <p className="text-sm text-muted-foreground">
                     Link your bank account securely via Account Aggregator to allow FinGuard to analyze your statements and signals.
                   </p>

@@ -69,7 +69,7 @@ export function DashboardPage() {
       </div>
 
       {/* Top Section: Radial Gauge */}
-      <Card className="overflow-hidden border-border/50 bg-card/50">
+      <Card className="overflow-hidden border-border/50 bg-card/40 backdrop-blur-md">
         <CardContent className="p-0 sm:flex items-center">
           <div className="sm:w-1/3 flex justify-center p-6 bg-background/50">
             <div className="h-64 w-full relative">
@@ -89,6 +89,7 @@ export function DashboardPage() {
                     background={{ fill: 'hsl(var(--muted))' }}
                     dataKey="value"
                     cornerRadius={10} 
+                    isAnimationActive={true}
                   />
                 </RadialBarChart>
               </ResponsiveContainer>
@@ -139,7 +140,7 @@ export function DashboardPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Card className={`h-full border ${isCritical ? 'border-destructive/80 bg-destructive/10 animate-glow-pulse' : isWarning ? 'border-amber-500/50 bg-amber-500/5' : 'border-border/50 bg-card/50'} transition-all hover:scale-105`}>
+                <Card className={`h-full border ${isCritical ? 'border-destructive/80 bg-destructive/10 animate-glow-pulse' : isWarning ? 'border-amber-500/50 bg-amber-500/5' : 'border-border/50 bg-card/40 backdrop-blur-md'} transition-all hover:scale-105`}>
                   <CardContent className="p-5 flex flex-col justify-between h-full space-y-4">
                     <div className="flex justify-between items-start">
                       <span className="text-sm font-semibold text-muted-foreground">{card.title}</span>
@@ -160,7 +161,7 @@ export function DashboardPage() {
       </div>
 
       {/* Bottom Section: Risk Trend Chart */}
-      <Card className="border-border/50 bg-card/50">
+      <Card className="border-border/50 bg-card/40 backdrop-blur-md">
         <CardHeader>
           <CardTitle>Risk Trend</CardTitle>
           <CardDescription>30-day historical view of your Spiral Risk Score</CardDescription>
@@ -195,6 +196,7 @@ export function DashboardPage() {
                   stroke="hsl(var(--primary))" 
                   strokeWidth={3} 
                   dot={false}
+                  isAnimationActive={true}
                   activeDot={{ r: 6, fill: 'hsl(var(--primary))', strokeWidth: 0 }}
                 />
               </LineChart>

@@ -3,6 +3,7 @@ import { AppLayout } from '@/components/layout/AppLayout';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { OnboardingPage } from '@/pages/OnboardingPage';
 import { AlertHistoryPage } from '@/pages/AlertHistoryPage';
+import { LandingPage } from '@/pages/LandingPage';
 import { useEffect } from 'react';
 
 function App() {
@@ -14,10 +15,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/app" element={<AppLayout />}>
           <Route index element={<DashboardPage />} />
           <Route path="alerts" element={<AlertHistoryPage />} />
-          <Route path="onboarding" element={<OnboardingPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
