@@ -43,7 +43,21 @@ The solution provided by 404 Found is a multi-layered financial safety ecosystem
 
 
 <img width="1909" height="880" alt="Screenshot 2026-04-22 014726" src="https://github.com/user-attachments/assets/41b80c60-7794-4742-b7b9-1acc50b9338e" />
-<img width="1855" height="805" alt="Screenshot 2026-04-22 014753" src="https://github.com/user-attachments/assets/3fbdb284-f925-4e26-a34f-ec5fa7715fd1" />
+
+<img width="1901" height="793" alt="Screenshot 2026-04-22 014735" src="https://github.com/user-attachments/assets/e054704a-8b6f-4f70-9f47-771143b2d35e" />
+
+<img width="1918" height="796" alt="Screenshot 2026-04-22 014744" src="https://github.com/user-attachments/assets/40c4c1f8-8578-4717-b5f9-3c3dcfe6aa14" />
+
+<img width="1855" height="805" alt="Screenshot 2026-04-22 014753" src="https://github.com/user-attachments/assets/55d0eaf4-4d67-48e0-9e36-e665d710f4b0" />
+
+<img width="1849" height="803" alt="Screenshot 2026-04-22 014805" src="https://github.com/user-attachments/assets/752c78b9-7056-4171-a2e0-085053550e3b" />
+
+<img width="1814" height="817" alt="Screenshot 2026-04-22 014821" src="https://github.com/user-attachments/assets/4f8cad80-8fd6-447f-bfbd-ff0ee0062377" />
+
+
+
+
+
 
 
 
